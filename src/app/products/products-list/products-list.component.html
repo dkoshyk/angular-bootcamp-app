@@ -1,0 +1,8 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <div fxFlex="0 1 33.3%" fxLayout="column" fxLayoutAlign="center center"
+       *ngFor="let product of products; trackBy: id"
+       [ngClass]="{ 'hidden': product.isHidden }">
+    <h2>{{ product.name }}</h2>
+    <p>Price: {{ product.price }}</p>
+  </div>
+</div>
