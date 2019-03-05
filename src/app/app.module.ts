@@ -6,6 +6,11 @@ import { HeaderModule } from '@shared/header/header.module';
 import { AppComponent } from './app.component';
 import { ProductsModule } from './products/products.module';
 import { MainModule } from './main/main.module';
+import { HeaderService } from '@shared/services/header.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -16,9 +21,12 @@ import { MainModule } from './main/main.module';
     HeaderModule,
     ProductsModule,
     MainModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule 
   ],
-  providers: [],
+  providers: [HeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,7 @@ import { ProductItemModel } from '../models/product-item.model';
 export class ProductsListComponent implements OnInit {
 
   products: ProductItemModel[];
+  searchQuery: string;
 
   constructor() { }
 

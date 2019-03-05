@@ -1,42 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '@shared/services/header.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'bootcamp-app';
 
-  activeView = 'main';
+  //activeView = 'main';
+  activeView = 'products';
+  headerItems: any[];
 
-  headerItems: any[] = [{
-    label: 'Main',
-    alias: 'main',
-    subItems: []
-  }, {
-    label: 'Products',
-    alias: 'products',
-    subItems: [{
-      label: 'All Categories',
-      alias: 'products'
-    }, {
-      label: 'BMW',
-      alias: 'products'
-    }, {
-      label: 'Mercedes',
-      alias: 'products'
-    }, {
-      label: 'Zhyguli',
-      alias: 'products'
-    }, {
-      label: 'Audi',
-      alias: 'products'
-    }, {
-      label: 'Toyota',
-      alias: 'products/toyota'
-    }]
-  }];
+  constructor(
+    private headerService: HeaderService
+  ){} 
+
+  ngOnInit(){
+    this.headerService.getMenuItems().subscribe(data => {
+      this.headerItems = data;
+    })  
+  }
 
   changeView(view: any){
     this.activeView = view;
