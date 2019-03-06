@@ -1,7 +1,4 @@
-<boot-header [menuItems]="headerItems" (viewChanged)="changeView($event)"></boot-header>
-<div [ngSwitch]="activeView">
-    <boot-products-list *ngSwitchCase="'products'"></boot-products-list>
-    <boot-main *ngSwitchCase="'main'"></boot-main>
-</div>
+<boot-header [menuItems]="headerItems"></boot-header>
+<router-outlet></router-outlet>
 
 

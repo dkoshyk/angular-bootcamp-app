@@ -1,37 +1,27 @@
-[
-    {
-        "label": "Main",
-        "alias": "main",
-        "subItems": []
-    },
-    {
-        "label": "Products",
-        "alias": "products",
-        "subItems": [
-            {
-                "label": "All Categories",
-                "alias": "products"
-            },
-            {
-                "label": "BMW",
-                "alias": "products"
-            },
-            {
-                "label": "Mercedes",
-                "alias": "products"
-            },
-            {
-                "label": "Zhyguli",
-                "alias": "products"
-            },
-            {
-                "label": "Audi",
-                "alias": "products"
-            },
-            {
-                "label": "Toyota",
-                "alias": "products"
-            }
-        ]
-    }
-]
+[{
+    "label": "Main",
+    "alias": "",
+    "subItems": []
+  }, {
+    "label": "Products",
+    "alias": "products",
+    "subItems": [{
+      "label": "All Categories",
+      "alias": "products/all"
+    }, {
+      "label": "BMW",
+      "alias": "products/bmw"
+    }, {
+      "label": "Mercedes",
+      "alias": "products/mercedes"
+    }, {
+      "label": "Zhyguli",
+      "alias": "products/zhyguli"
+    }, {
+      "label": "Audi",
+      "alias": "products/audi"
+    }, {
+      "label": "Toyota",
+      "alias": "products/toyota"
+    }]
+  }]

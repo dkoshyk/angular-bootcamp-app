@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'boot-header',
@@ -7,25 +8,22 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() menuItems; 
-  @Output() viewChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Input() menuItems;
 
-  activeView: string;
   dropdownItems: any[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   selectItem(item: any): void {
-    if(item.subItems && item.subItems.length) {
+    if (item.subItems && item.subItems.length) {
       this.dropdownItems = item.subItems;
 
       return;
     }
 
-    this.activeView = item.alias;
-    this.viewChanged.emit(this.activeView);
+    this.router.navigate([item.alias]);
   }
 }

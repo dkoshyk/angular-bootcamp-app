@@ -4,13 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderModule } from '@shared/header/header.module';
 import { AppComponent } from './app.component';
-import { ProductsModule } from './products/products.module';
-import { MainModule } from './main/main.module';
+
 import { HeaderService } from '@shared/services/header.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,8 @@ import { environment } from 'src/environments/environment';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HeaderModule,
-    ProductsModule,
-    MainModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

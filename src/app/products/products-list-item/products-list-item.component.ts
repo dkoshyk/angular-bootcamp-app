@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductItemModel } from '../models/product-item.model';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'boot-products-list-item',
@@ -11,8 +12,13 @@ import { ProductItemModel } from '../models/product-item.model';
 export class ProductsListItemComponent implements OnInit {
   @Input() product: ProductItemModel;
 
-  constructor() { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
+  }
+
+  delete(ev: any): void {
+    ev.stopPropagation();
+    this.productsService.delete(this.product.id);
   }
 }
