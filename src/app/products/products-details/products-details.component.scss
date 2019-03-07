@@ -1,10 +1,10 @@
 .product-card {
     cursor: pointer;
-    margin: 10px 0;
+    margin: 20px 100px;
     transition: all .2s linear;
   
     .product-card-img {
-      height: 200px;
+      height: 400px;
       display: flex;
       position: relative;
       overflow: hidden;
@@ -22,8 +22,4 @@
       -webkit-box-orient: vertical;
     }
   
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, .2);
-    }
   }

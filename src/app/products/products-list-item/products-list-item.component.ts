@@ -21,4 +21,13 @@ export class ProductsListItemComponent implements OnInit {
     ev.stopPropagation();
     this.productsService.delete(this.product.id);
   }
+
+  clone(ev: any): void {
+    ev.stopPropagation();
+
+    let createProduct = this.product;
+    delete createProduct['id'];
+
+    this.productsService.clone(createProduct);
+  }
 }

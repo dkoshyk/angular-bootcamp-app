@@ -10,11 +10,17 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
 import { ProductsService } from './services/products.service';
 import { FirestoreSettingsToken, AngularFirestoreModule } from '@angular/fire/firestore';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule } from '@angular/material';
+import { ProductsDetailsComponent } from './products-details/products-details.component';
 
 @NgModule({
   providers: [ProductsService, { provide: FirestoreSettingsToken, useValue: {} }],
-  declarations: [ProductsListComponent, ProductsListItemComponent, ProductsComponent, FilterPipe],
+  declarations: [ProductsListComponent
+    , ProductsListItemComponent
+    , ProductsDetailsComponent
+    , ProductsComponent
+    , FilterPipe
+    , ProductsDetailsComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -22,9 +28,14 @@ import { MatButtonModule } from '@angular/material';
     FormsModule,
     AngularFirestoreModule,
     ProductsRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule
   ],
-  exports: [ProductsListComponent, ProductsListItemComponent, ProductsComponent]
+  exports: [ProductsListComponent
+    , ProductsListItemComponent
+    , ProductsDetailsComponent
+    , ProductsComponent]
 })
 
 //ng g module products

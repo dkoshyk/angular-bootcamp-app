@@ -6,4 +6,4 @@ export class ProductItemModel {
     description?: string;
     imgUrl?: string;
     isHidden: boolean;
-  }
+} 

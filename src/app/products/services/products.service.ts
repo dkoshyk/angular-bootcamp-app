@@ -23,7 +23,22 @@ export class ProductsService {
       }))
   }
 
-  delete(id: string): Promise<void>{
+  getDetails(id: string): any {
+    return this.firestore.doc('products/' + id)
+      .get()
+      .pipe(map((product) => {
+        return {
+          id: product.id,
+          ...product.data()
+        };
+      }));
+  }
+
+  clone(cloneObj: any): any {
+      this.firestore.collection('products').add(cloneObj);
+  }
+
+  delete(id: string): Promise<void> {
     return this.firestore.doc('products/' + id).delete();
   }
 }
