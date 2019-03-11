@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { FilterPipe } from '@shared/pipes/filter.pipe'
@@ -10,8 +10,10 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
 import { ProductsService } from './services/products.service';
 import { FirestoreSettingsToken, AngularFirestoreModule } from '@angular/fire/firestore';
-import { MatButtonModule, MatCardModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatCheckboxModule, MatOptionModule, MatSelectModule, MatIconModule } from '@angular/material';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { AddNewProductComponent } from './modals/add-new-product/add-new-product.component';
 
 @NgModule({
   providers: [ProductsService, { provide: FirestoreSettingsToken, useValue: {} }],
@@ -20,7 +22,10 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
     , ProductsDetailsComponent
     , ProductsComponent
     , FilterPipe
-    , ProductsDetailsComponent],
+    , ProductsDetailsComponent, ProductFormComponent, AddNewProductComponent],
+  entryComponents: [
+    AddNewProductComponent
+  ],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -30,7 +35,12 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
     ProductsRoutingModule,
     MatButtonModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatOptionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatIconModule,
   ],
   exports: [ProductsListComponent
     , ProductsListItemComponent

@@ -1,20 +1,33 @@
-<mat-card class="product-card">
-  <mat-card-header >
-    <mat-card-title>Details</mat-card-title>
-    <mat-card-title>{{ product?.name }}</mat-card-title>
-    <mat-card-subtitle>Price: {{ product?.price | currency }}</mat-card-subtitle>
-    
-  </mat-card-header>
-  <mat-card-actions>
-      <button mat-button (click)="delete($event, product)">Delete</button>
-    </mat-card-actions>
-  <div class="product-card-img">
-    <img mat-card-image [src]="product.imgUrl" alt="product.name">
+<div fxLayout="row" fxLayoutAlign="center" >
+  <div fxFlex="1 1 52%" fxLayout="column" fxLayoutAlign="center center" fxLayout="column" fxLayoutAlign="center">
+    <!-- DETAILS   -->
+    <mat-card class="product-card" *ngIf="!isEditMode">
+      <mat-card-header>
+        <mat-card-title>{{ product?.name }}</mat-card-title>
+        <mat-card-subtitle>Price: {{ product?.price | currency }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions fxLayoutAlign="space-between">
+        <button mat-raised-button (click)="editModeOn()" color="primary">Edit</button>
+        <button mat-raised-button (click)="delete($event, product)" color="warn">Delete</button>
+      </mat-card-actions>
+      <div class="product-card-img" *ngIf="product.imgUrl">
+        <img mat-card-image [src]="product.imgUrl" alt="product.name">
+      </div>
+      <mat-card-content>
+        <p class="product-card-content">
+          {{ product.description }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <!-- EDIT   -->
+    <mat-card class="product-card" *ngIf="isEditMode">
+          <mat-card-content>
+              <boot-product-form [product]="product"></boot-product-form>
+            </mat-card-content>
+            <mat-card-actions fxLayoutAlign="space-between">
+              <button (click)="editModeOff()" mat-raised-button color="accent">Cancel</button>
+              <button (click)="update()" mat-raised-button color="primary">Save</button>
+            </mat-card-actions>
+      </mat-card>
   </div>
-  <mat-card-content>
-    <p class="product-card-content">
-      {{ product.description }}
-    </p>
-  </mat-card-content>
-  
-</mat-card>
+</div>

@@ -26,7 +26,6 @@ export class ProductsListItemComponent implements OnInit {
     ev.stopPropagation();
 
     let createProduct = this.product;
-    delete createProduct['id'];
 
     this.productsService.clone(createProduct);
   }

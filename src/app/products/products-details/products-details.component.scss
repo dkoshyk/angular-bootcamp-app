@@ -4,7 +4,7 @@
     transition: all .2s linear;
   
     .product-card-img {
-      height: 400px;
+      max-height: 350px;
       display: flex;
       position: relative;
       overflow: hidden;
@@ -23,3 +23,5 @@
     }
   
   }
+
+  

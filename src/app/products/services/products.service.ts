@@ -35,7 +35,17 @@ export class ProductsService {
   }
 
   clone(cloneObj: any): any {
+      delete cloneObj['id'];
+
       this.firestore.collection('products').add(cloneObj);
+  }
+
+  add(product: ProductItemModel): any {
+    this.firestore.collection('products').add(product);  
+  }
+
+  update(product: any): any {
+    this.firestore.doc(`products/${product.id}`).update(product);
   }
 
   delete(id: string): Promise<void> {

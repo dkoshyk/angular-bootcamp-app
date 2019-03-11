@@ -12,20 +12,24 @@ export class ProductsDetailsComponent implements OnInit {
 
   product: ProductItemModel = new ProductItemModel();
 
+  isEditMode: boolean;
+
   constructor(private activatedRoute: ActivatedRoute
     , private productsService: ProductsService
     , private router: Router) { }
 
   ngOnInit() {
 
-    this.activatedRoute.params.subscribe(res => {
+    this.activatedRoute.data.subscribe(res => {
       console.log(res);
-
-      this.productsService.getDetails(res.id).subscribe((product: ProductItemModel) => {
-        this.product = product;
-      });
-
+      this.product = res.detailsData;
     })
+  }
+
+  update(){
+    this.productsService.update(this.product); 
+    
+    this.editModeOff();
   }
 
   delete(ev: any): void {
@@ -34,5 +38,13 @@ export class ProductsDetailsComponent implements OnInit {
       .then(() => {
         this.router.navigate(["products", "all"])
       });
+  }
+
+  editModeOn(){
+    this.isEditMode = true; 
+  }
+
+  editModeOff(){
+    this.isEditMode = false; 
   }
 }
