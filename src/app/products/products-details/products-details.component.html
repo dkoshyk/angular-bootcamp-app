@@ -1,5 +1,5 @@
-<div fxLayout="row" fxLayoutAlign="center" >
-  <div fxFlex="1 1 52%" fxLayout="column" fxLayoutAlign="center center" fxLayout="column" fxLayoutAlign="center">
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="1 1 52%" fxLayout="column" fxLayoutAlign="center center">
     <!-- DETAILS   -->
     <mat-card class="product-card" *ngIf="!isEditMode">
       <mat-card-header>
@@ -21,13 +21,13 @@
     </mat-card>
     <!-- EDIT   -->
     <mat-card class="product-card" *ngIf="isEditMode">
-          <mat-card-content>
-              <boot-product-form [product]="product"></boot-product-form>
-            </mat-card-content>
-            <mat-card-actions fxLayoutAlign="space-between">
-              <button (click)="editModeOff()" mat-raised-button color="accent">Cancel</button>
-              <button (click)="update()" mat-raised-button color="primary">Save</button>
-            </mat-card-actions>
-      </mat-card>
+      <mat-card-content>
+        <boot-product-form [product]="product"></boot-product-form>
+      </mat-card-content>
+      <mat-card-actions fxLayoutAlign="space-between">
+        <button (click)="editModeOff()" mat-raised-button color="accent">Cancel</button>
+        <button (click)="update()" mat-raised-button color="primary">Save</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

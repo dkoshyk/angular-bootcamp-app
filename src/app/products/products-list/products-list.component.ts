@@ -24,18 +24,12 @@ export class ProductsListComponent implements OnInit {
   ngOnInit() {
 
     this.activatedRoute.params.subscribe(res => {
-      console.log(res);
-
       this.productsService.getProducts().subscribe((products: ProductItemModel[]) => {
         this.products = res.categoryId === 'all' ?
           products :
           products.filter(x => x.category.toLowerCase() === res.categoryId);
       });
-
     })
-
-
-
   }
 
   openAddNewProduct(): void {
@@ -52,7 +46,9 @@ export class ProductsListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      this.productsService.add(res);
+      if (res) {
+        this.productsService.add(res);
+      }
     })
   }
 }

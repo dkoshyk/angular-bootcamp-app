@@ -26,9 +26,8 @@ export class ProductsDetailsComponent implements OnInit {
     })
   }
 
-  update(){
-    this.productsService.update(this.product); 
-    
+  update() {
+    this.productsService.update(this.product);
     this.editModeOff();
   }
 
@@ -40,11 +39,11 @@ export class ProductsDetailsComponent implements OnInit {
       });
   }
 
-  editModeOn(){
-    this.isEditMode = true; 
+  editModeOn() {
+    this.isEditMode = true;
   }
 
-  editModeOff(){
-    this.isEditMode = false; 
+  editModeOff() {
+    this.isEditMode = false;
   }
 }

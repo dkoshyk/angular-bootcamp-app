@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'boot-auth',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  user = {
+    username: '',
+    password: ''
+  }
+
+  constructor(private authService: AuthService
+    , private router: Router) { }
 
   ngOnInit() {
+  }
+
+  login(): void {
+    this.authService.login(this.user).subscribe((response) => {
+      if (response) {
+        this.router.navigate(['']);
+      }
+    });
   }
 
 }
