@@ -6,7 +6,7 @@
         <mat-card-title>{{ product?.name }}</mat-card-title>
         <mat-card-subtitle>Price: {{ product?.price | currency }}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-actions fxLayoutAlign="space-between">
+      <mat-card-actions *ngIf="isAdmin" fxLayoutAlign="space-between">
         <button mat-raised-button (click)="editModeOn()" color="primary">Edit</button>
         <button mat-raised-button (click)="delete($event, product)" color="warn">Delete</button>
       </mat-card-actions>

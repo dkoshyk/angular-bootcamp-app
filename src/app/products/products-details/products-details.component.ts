@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductItemModel } from '../models/product-item.model';
 import { ProductsService } from '../services/products.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'boot-products-details',
@@ -13,12 +14,15 @@ export class ProductsDetailsComponent implements OnInit {
   product: ProductItemModel = new ProductItemModel();
 
   isEditMode: boolean;
+  isAdmin: boolean;
 
   constructor(private activatedRoute: ActivatedRoute
+    , private authService: AuthService
     , private productsService: ProductsService
     , private router: Router) { }
 
   ngOnInit() {
+    this.isAdmin = this.authService.isAdmin();
 
     this.activatedRoute.data.subscribe(res => {
       console.log(res);

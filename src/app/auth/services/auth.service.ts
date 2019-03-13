@@ -22,7 +22,12 @@ export class AuthService {
     }
   }
 
-  getUsers(): any {
+  isAdmin(): boolean {
+    const user = this.getUser();
+    return user.role === 'admin';
+  }
+
+  getUser(): any {
     return JSON.parse(sessionStorage.getItem('user'));
   }
 

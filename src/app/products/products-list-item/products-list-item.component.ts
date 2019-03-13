@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductItemModel } from '../models/product-item.model';
 import { ProductsService } from '../services/products.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'boot-products-list-item',
@@ -12,9 +13,13 @@ import { ProductsService } from '../services/products.service';
 export class ProductsListItemComponent implements OnInit {
   @Input() product: ProductItemModel;
 
-  constructor(private productsService: ProductsService) { }
+  isAdmin: boolean;
+
+  constructor(private productsService: ProductsService
+    , private authService: AuthService) { }
 
   ngOnInit() {
+    this.isAdmin = this.authService.isAdmin();
   }
 
   delete(ev: any): void {

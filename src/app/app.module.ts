@@ -6,11 +6,13 @@ import { HeaderModule } from '@shared/header/header.module';
 import { AppComponent } from './app.component';
 
 import { HeaderService } from '@shared/services/header.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { SpinnerInterceptor } from './core/interceptors/spinner.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,14 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule 
+    AngularFireDatabaseModule,
+    MatProgressSpinnerModule
   ],
-  providers: [HeaderService],
+  providers: [HeaderService, {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: SpinnerInterceptor, 
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

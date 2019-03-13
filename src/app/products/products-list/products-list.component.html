@@ -1,6 +1,6 @@
 <div class="products-wrapper">
   <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
-    <div (click)="openAddNewProduct()" class="add-product" color="primary">
+    <div *ngIf="isAdmin" (click)="openAddNewProduct()" class="add-product" color="primary">
       <mat-icon>add_box</mat-icon>
     </div>
     <mat-form-field>
@@ -11,7 +11,8 @@
 
   <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="flex-start center">
     <div fxFlex="0 1 33.3%" fxLayout="column" fxLayoutAlign="center"
-      *ngFor="let product of products | filter: searchQuery: 'name'" [ngClass]="{ 'hidden': product.isHidden }">
+      *ngFor="let product of products | filter: searchQuery: 'name'"
+      [ngClass]="{ 'hidden': product.isHidden && !isAdmin }">
       <boot-products-list-item [product]="product"></boot-products-list-item>
     </div>
   </div>
