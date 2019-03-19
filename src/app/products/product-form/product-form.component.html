@@ -1,10 +1,17 @@
+<div *ngFor="let i of arr">
+  <span>{{i}}</span>
+</div>
+<button (click)="add()">Add</button>
+<div>{{product.name}}</div>
+
 <form [formGroup]="form" novalidate autocomplete="off">
   <div fxLayout="column" fxLayoutAlign="center">
     <mat-form-field>
       <input placeholder="Name" type="text" matInput formControlName="name">
     </mat-form-field>
     <mat-form-field>
-      <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="3" placeholder="Description" type="text" matInput formControlName="description"></textarea>
+      <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="3" placeholder="Description" type="text"
+        matInput formControlName="description"></textarea>
     </mat-form-field>
     <mat-form-field>
       <input placeholder="Price" type="number" matInput formControlName="price">
@@ -15,6 +22,12 @@
           {{ category.label }}
         </mat-option>
       </mat-select>
+      <!-- <div formArrayName="checkboxes">
+        <div *ngFor="let chkBx of form.get('checkboxes').controls">
+          <mat-checkbox formControlName="chkBx">123</mat-checkbox>  
+      </div>
+      </div> -->
+
     </mat-form-field>
     <mat-form-field>
       <input placeholder="Picture URL" type="text" matInput formControlName="imgUrl">
